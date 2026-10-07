@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第 2 章：金融市場與金融機構</title>
+    
+    <style>
+        :root {
+            --primary-navy: #0F172A;
+            --accent-blue: #0284C7;
+            --accent-teal: #0D9488;
+            --accent-amber: #D97706;
+            --accent-purple: #7C3AED;
+            --alert-red: #DC2626;
+            --bg-light: #F8FAFC;
+            --card-border: #E2E8F0;
+            --text-dark: #1E293B;
+            --text-muted: #64748B;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
+            line-height: 1.8;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-navy), #1E293B);
+            color: white;
+            padding: 3.5rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.3rem;
+            letter-spacing: 1px;
+            font-weight: 700;
+            color: #F8FAFC;
+        }
+
+        header p {
+            margin: 0 auto;
+            font-size: 1.15rem;
+            color: #94A3B8;
+            max-width: 800px;
+        }
+
+        .container {
+            max-width: 1040px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .section-badge.purple { background-color: var(--accent-purple); }
+        .section-badge.amber { background-color: var(--accent-amber); }
+        .section-badge.teal { background-color: var(--accent-teal); }
+        .section-badge.red { background-color: var(--alert-red); }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+        }
+
+        .card h2 {
+            color: var(--primary-navy);
+            margin-top: 0;
+            border-bottom: 2px solid #F1F5F9;
+            padding-bottom: 12px;
+            font-size: 1.6rem;
+        }
+
+        .topic-question {
+            background-color: #F0F9FF;
+            border-left: 5px solid var(--accent-blue);
+            padding: 1.2rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.2rem;
+        }
+
+        .box {
+            background-color: #F8FAFC;
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 1.4rem;
+        }
+
+        .box h3 {
+            margin-top: 0;
+            color: var(--primary-navy);
+            font-size: 1.2rem;
+            border-bottom: 2px solid #E2E8F0;
+            padding-bottom: 6px;
+        }
+
+        /* 自訂 CSS 箭頭 */
+        .arrow {
+            display: inline-block;
+            margin: 0 8px;
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+        .arrow::after {
+            content: "➔";
+        }
+
+        /* 流程圖樣式 */
+        .flow-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            background-color: #F1F5F9;
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin: 1.2rem 0;
+            gap: 8px;
+        }
+
+        .flow-node {
+            background-color: white;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            padding: 8px 14px;
+            font-weight: 600;
+            color: var(--primary-navy);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+            font-size: 0.95rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.2rem;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        th, td {
+            border: 1px solid var(--card-border);
+            padding: 14px 16px;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: var(--primary-navy);
+            color: white;
+        }
+
+        tr:nth-child(even) { background-color: #F8FAFC; }
+
+        .speech-box {
+            background-color: #FFFBEB;
+            border-left: 5px solid var(--accent-amber);
+            padding: 1.2rem 1.5rem;
+            margin-top: 1.5rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .speech-box strong { color: #92400E; font-size: 1.05rem; }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            header h1 { font-size: 1.8rem; }
+            .flow-container { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>第 2 章：金融市場與金融機構 </h1>
+        <p>基於 Brealey：資金流向架構、蘋果案例演進與金融中介比較</p>
+    </header>
+
+    <div class="container">
+
+        <!-- 1. 核心觀念釐清 -->
+        <div class="card">
+            <span class="section-badge blue">觀念釐清</span>
+            <h2>1. CFO 角色、金融市場與金融機構之差異</h2>
+
+            <div class="topic-question">
+                💡 觀念導讀：CFO（財務長）是企業中負責與外部金融體系對接的核心人物。理解金融體系必須區分「市場」與「機構」。
+            </div>
+
+            <div class="grid-2">
+                <div class="box">
+                    <h3>🏦 金融機構 (Financial Institutions)</h3>
+                    <p>指的是具體的<strong>組織實體與場所</strong>（如商業銀行、保險公司、信託機構）。其核心功能是作為中介，接收社會大眾的儲蓄，並將其轉化為企業的投資資金。</p>
+                </div>
+
+                <div class="box">
+                    <h3>📈 金融市場 (Financial Markets)</h3>
+                    <p>指的是一個<strong>交易概念、平台與機制</strong>（如股票交易所、債券市場、外匯市場）。提供買賣雙方進行各類金融證券（Securities）發行與交易撮合。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. 蘋果公司個案剖析 -->
+        <div class="card">
+            <span class="section-badge purple">經典個案 (課本表 2.1)</span>
+            <h2>2. 蘋果公司（Apple Inc.）生命週期與融資演進 (校正版)</h2>
+
+            <p>蘋果公司（成立於 1976 年 4 月）的發展史完美展示了一家企業如何隨著生命週期，靈活運用不同的金融工具與市場：</p>
+
+            <div class="flow-container">
+                <div class="flow-node">1976 商業信用</div>
+                <span class="arrow"></span>
+                <div class="flow-node">1978 創投 VC 注入</div>
+                <span class="arrow"></span>
+                <div class="flow-node">1980 成功 IPO 上市</div>
+                <span class="arrow"></span>
+                <div class="flow-node">1987 首次發放股利</div>
+                <span class="arrow"></span>
+                <div class="flow-node">1994-97 債務重組危機</div>
+                <span class="arrow"></span>
+                <div class="flow-node">2004 還清長債</div>
+                <span class="arrow"></span>
+                <div class="flow-node">2012+ 大規模資本回饋</div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>年份階段</th>
+                        <th>融資與資本行為</th>
+                        <th>財務學原理解析</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1976 年<br>(草創期)</strong></td>
+                        <td>車庫組裝個人電腦。零組件供應商給予 <strong>30 天應付帳款（Accounts Payable）</strong> 期限。</td>
+                        <td><strong>商業信用融資（Trade Credit）</strong>：在缺乏銀行貸款時，透過供應商帳期取得短期流動性。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1978–1979 年<br>(成長期)</strong></td>
+                        <td>引進風險投資人（Venture Capital, VC，如 Arthur Rock、Sequoia）資金與資源。</td>
+                        <td><strong>創投私有股權（Private Equity）</strong>：創投業者承擔極高破產風險，換取公司高成長股權回報。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1980 年 12 月<br>(公開上市)</strong></td>
+                        <td>首次公開發行（IPO），以每股 $22 美元向公眾發行，籌集約 <strong>1.01 億美元</strong>。</td>
+                        <td><strong>初級市場（Primary Market）</strong>：將私有股權轉為公眾股權，為公司注入大規模外部永久權益資金。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1987 年<br>(獲利發放)</strong></td>
+                        <td>上市 7 年後首次發放現金股利（每股 $0.12 美元）。</td>
+                        <td>展現企業從草創至穩健獲利需要漫長過程，盈餘先投入再投資（Reinvestment），成熟後才發放股利。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1994–1997 年<br>(營運危機)</strong></td>
+                        <td>巨額虧損、裁員，1996 停發股利，並發行 6.5% 公司債與私下債務融資。</td>
+                        <td>在股價低迷時無法進行股權融資，只能轉向發行債券與私下借款以維持流動性危機（後於 2004 年還清）。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2012–2024 年<br>(成熟現金牛)</strong></td>
+                        <td>現金儲備超千億，累積發放股利與執行<strong>股票買回（Buybacks）超過 8,000 億美元</strong>。</td>
+                        <td>成熟科技巨頭邁入營運現金流完全自給自足，並透過頂級信用（AAA/AA 評級）低利率發債優化資本結構。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 3. 金融市場分類 -->
+        <div class="card">
+            <span class="section-badge teal">分類架構</span>
+            <h2>3. 金融市場四大核心分類</h2>
+
+            <div class="grid-2">
+                <div class="box">
+                    <h3>1. 初級市場 vs. 次級市場</h3>
+                    <ul>
+                        <li><strong>初級市場（Primary）：</strong> 公司發行<strong>新證券</strong>（IPO/SEO）籌集資金，<strong>現金直接流入公司</strong>。</li>
+                        <li><strong>次級市場（Secondary）：</strong> 投資人之間買賣<strong>二手證券</strong>，<strong>公司拿不到現金</strong>，但市場提供<strong>流動性與即時估值</strong>。</li>
+                    </ul>
+                </div>
+
+                <div class="box">
+                    <h3>2. 資本市場 vs. 貨幣市場</h3>
+                    <ul>
+                        <li><strong>資本市場（Capital）：</strong> 交易期限<strong>大於一年（長期）</strong>的股票與長期債券，用於建廠與研發投資。</li>
+                        <li><strong>貨幣市場（Money）：</strong> 交易期限<strong>一年以內（短期）</strong>的高流動性工具（如商業本票 CP、國庫券 T-Bills）。</li>
+                    </ul>
+                </div>
+
+                <div class="box">
+                    <h3>3. 股票市場 vs. 固定收益市場</h3>
+                    <ul>
+                        <li><strong>股票市場（Equity）：</strong> 買賣代表公司所有權的普通股，回報取決於殘餘盈餘（股利與資本利得）。</li>
+                        <li><strong>固定收益市場（Fixed-Income）：</strong> 買賣公司債與公債，定期支付固定債息與本金，受契約保護。</li>
+                    </ul>
+                </div>
+
+                <div class="box">
+                    <h3>4. 衍生性商品與外匯市場</h3>
+                    <ul>
+                        <li><strong>外匯市場（FX）：</strong> 跨國貨幣兌換與資金流動。</li>
+                        <li><strong>衍生性商品（Derivatives）：</strong> 包含選擇權（Options，買賣權利）與期貨（Futures，未來履約），用於風險對沖與避險。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. 金融中介比較 -->
+        <div class="card">
+            <span class="section-badge amber">機構比較</span>
+            <h2>4. 金融中介類型比較：共同基金 vs. 避險基金</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>評估維度</th>
+                        <th>共同基金 (Mutual Funds)</th>
+                        <th>避險基金 (Hedge Funds)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>募集對象與門檻</strong></td>
+                        <td>大眾公開募集，門檻極低（如數千元即可投資）。</td>
+                        <td>限高淨值個人與機構投資人（如門檻 $100萬–$500萬美元）。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>投資策略與風險</strong></td>
+                        <td>受嚴格監管，追求大眾化分散投資（如持股 600–700 檔）。</td>
+                        <td>採取複雜高風險策略（如槓桿、放空高估股票、對沖或併購賭注）。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>費用結構</strong></td>
+                        <td>收取固定比例的資產管理費（每年約 0.5%–2%）。</td>
+                        <td>管理費（如 2%）加高額績效抽成（通常為利潤的 20%）。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 5. 課堂討論解答 -->
+        <div class="card" style="background-color: #FAF5FF; border-color: #E9D8FD;">
+            <span class="section-badge purple">課堂討論擬答</span>
+            <h2>5. 課堂討論題答案與 CFO 思考</h2>
+
+            <div class="topic-question">
+                ❓ 討論一：次級市場股票買賣只是投資人之間的資金移轉，公司拿不到一毛錢，為什麼 CFO 仍然非常關心股價？
+            </div>
+            <ul>
+                <li><strong>降低未來融資成本：</strong> 次級市場股價高，公司未來發行新股（SEO）或可轉換公司債時能籌集更多資金，降低權益資本成本。</li>
+                <li><strong>企業名譽與信用：</strong> 股價是價值的即時體現，股價高的公司在銀行連帶貸款或供應商給予商業信用時能獲得更好的條件。</li>
+                <li><strong>防禦敵意併購（Hostile Takeover）：</strong> 股價若被嚴重低估，容易成為競爭對手低價掠奪併購的目标。</li>
+                <li><strong>對齊高官薪酬（代理問題）：</strong> 管理層薪酬包含股票選擇權（Stock Options），高股價能降低管理層與股東間的代理成本。</li>
+            </ul>
+
+            <div class="topic-question purple" style="margin-top: 1.5rem;">
+                ❓ 討論二：如果你是一家新創 AI 公司的 CFO，選擇「創投 VC」、「銀行貸款」與「IPO 上市」時會考慮哪些因素？
+            </div>
+            <ul>
+                <li><strong>風險與現金流匹配：</strong> AI 新創初期研發燒錢且無固定資產，無法承受銀行定期還本付息壓力，首選願意承擔風險的<strong>創投 VC</strong>。</li>
+                <li><strong>控制權與股權稀釋：</strong> VC 與 IPO 會稀釋創辦團隊股權，銀行貸款不稀釋股權，但前提是公司需具備穩定現金流。</li>
+                <li><strong>戰略附加價值：</strong> 優秀的 VC 除了資金，還能引進 AI 算力資源、客戶網路與專業治理經驗，這是銀行與大眾投資人無法提供的。</li>
+            </ul>
+
+            <div class="speech-box">
+                <strong>總結：</strong><br>
+                「一個健全運作的現代金融體系是實體經濟繁榮的基礎。從蘋果公司的發展歷程可以看到：草創時需要商業信用與 VC 創投，成熟成長時需要 IPO 與次級市場提供流動性，營運波動時需要債券市場救命，成熟後透過股票買回回饋股東。理解金融市場與機構的功能，是每一位 CFO 進行最佳資本配置的核心基礎！」
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>參考教材：Brealey, Myers, Allen & Edmans - <i>Principles of Corporate Finance</i> (Chapter 2 Master Edition)</p>
+        <p>製作：財務經濟學課堂討論與個案分析教材庫</p>
+    </footer>
+
+</body>
+</html>
