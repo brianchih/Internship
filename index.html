@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金融業企業實習宣導綜合整理與比較</title>
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #334155;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-size: 2rem;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        /* 分頁標籤樣式 */
+        .nav-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .nav-link {
+            padding: 12px 24px;
+            font-weight: bold;
+            color: #64748b;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-link.active {
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--secondary-color);
+            background-color: rgba(37, 99, 235, 0.05);
+            border-radius: 6px 6px 0 0;
+        }
+
+        /* 分頁內容樣式 */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 內容卡片樣式 */
+        .info-card {
+            background: #f1f5f9;
+            border-left: 5px solid var(--secondary-color);
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .info-card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* 表格樣式 */
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background-color: var(--card-bg);
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 12px 15px;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: #1e293b;
+            color: #ffffff;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .highlight {
+            color: #d97706;
+            font-weight: bold;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            background-color: #e2e8f0;
+            color: #334155;
+        }
+
+        .tag-blue { background-color: #dbeafe; color: #1e40af; }
+        .tag-green { background-color: #dcfce7; color: #166534; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>金融業企業實習招募資訊彙整</h1>
+
+    <!-- 頁籤導覽 -->
+    <ul class="nav-tabs">
+        <li><button class="nav-link active" onclick="openTab(event, 'capital')">群益金鼎證券</button></li>
+        <li><button class="nav-link" onclick="openTab(event, 'sinopac')">永豐銀行</button></li>
+        <li><button class="nav-link" onclick="openTab(event, 'cathay')">國泰世華銀行</button></li>
+        <li><button class="nav-link" onclick="openTab(event, 'president')">統一證券</button></li>
+        <li><button class="nav-link" onclick="openTab(event, 'comparison')">📊 四家綜合比較表</button></li>
+    </ul>
+
+    <!-- 1. 群益金鼎證券 -->
+    <div id="capital" class="tab-content active">
+        <div class="info-card">
+            <h3>群益金鼎證券——下學期企業實習重點摘要</h3>
+        </div>
+        
+        <h4>一、 核心招募資訊</h4>
+        <ul>
+            <li><strong>實習薪資：</strong>
+                <ul>
+                    <li>具備證照實習薪資：<span class="highlight">31,000 元/月</span>。</li>
+                    <li>畢業正式留任薪資：<span class="highlight">37,000 元/月起</span>（享業務獎金與行政升遷管道）。</li>
+                    <li>無證照實習：僅能提供 <span class="highlight">10,000 元/月</span> 獎學金（工時相同，強烈建議考照）。</li>
+                </ul>
+            </li>
+            <li><strong>必備 2 張證照：</strong> 金融市場常識與職業道德、證券商業務員（初級普業）。</li>
+            <li><strong>招募職務：</strong> 全方位理財經紀人（以業務培訓為主，輔以流量與線上社群開發教學）。</li>
+            <li><strong>職務彈性調整：</strong> 若實習期間發現不適合業務，可向經理人提出協助轉任<span class="tag tag-blue">行政職</span>。</li>
+            <li><strong>培訓流程：</strong> 前 2 週於「忠孝分公司」進行集中訓練（每週 2~3 天課程），隨後至分公司實務見習。</li>
+            <li><strong>工作作息：</strong> 早班 <span class="highlight">07:40 到班</span>（聽國際晨會/盤前會），下午 <span class="highlight">16:00 下班</span>（13:30 收盤）。</li>
+            <li><strong>據點分發：</strong> 全台 52 間分公司（宜蘭至屏東均有，除台東外）；實習可在台北，畢業可協調返鄉服務。</li>
+            <li><strong>課業配合：</strong> 仍為學生身份，若學校有課優先以學校課程為主（向公司請假即可）。</li>
+        </ul>
+
+        <h4>二、 重要時程規劃</h4>
+        <div class="table-responsive">
+            <table>
+                <tr><th>時間點</th><th>應完成事項 / 重要日程</th></tr>
+                <tr><td>即日起～10月底</td><td><strong>盡速報考證照：</strong> 預約考場約需一個月，請立即報考「證券業務員」與「金融道德」。</td></tr>
+                <tr><td>期中考過後</td><td><strong>實習面試：</strong> 於分公司進行彈性面試。面試時無須已取得證照，但需說明報考進度。</td></tr>
+                <tr><td>12 月底前</td><td><strong>最晚考取證照期限：</strong> 務必取得證照，以確保寒假實習能以 31,000 元全薪條件錄用。</td></tr>
+                <tr><td>明年初（寒假起）</td><td><strong>下學期實習正式開始</strong>。</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 2. 永豐銀行 -->
+    <div id="sinopac" class="tab-content">
+        <div class="info-card">
+            <h3>永豐銀行——下學期企業實習重點摘要</h3>
+        </div>
+
+        <h4>一、 核心招募資訊</h4>
+        <ul>
+            <li><strong>聘用身份與薪資：</strong> <span class="tag tag-green">正職聘用</span>，實習月薪 <span class="highlight">32,000 元/月</span>（含 3,000 元伙食津貼）。</li>
+            <li><strong>福利與年資：</strong> 享有正職員工相同福利（勞健保、團保、<span class="highlight">年終績效獎金</span>、福利會禮券、特休等）。實習年資可直接延續。</li>
+            <li><strong>開放職缺：</strong>
+                <ul>
+                    <li><strong>分行作業人員（前檯櫃檯）：</strong> 一般存匯業務、開戶與網銀設定。全台據點多（含京城銀行合併據點）。</li>
+                    <li><strong>作業中心人員（後檯作業）：</strong> 放款作業、外幣進出口貿易、後檯開戶審查對保。限台北與高雄作業中心。</li>
+                </ul>
+            </li>
+            <li><strong>實習期間：</strong> <span class="highlight">2027 年 1 月 18 日 至 2027 年 6 月底</span>（提早至 1/18 開始，以避開農曆年前銀行最忙碌高峰期）。</li>
+            <li><strong>工作時間：</strong> 週一至週五 <span class="highlight">08:45 ~ 17:45</span>（需配合全時段/全職實習，建議修畢 daytime 課程）。</li>
+            <li><strong>學校課程配合地區：</strong> 配合學校課程支援僅限<span class="tag tag-blue">雙北地區</span>據點。</li>
+            <li><strong>應徵門檻：</strong> 大四不限科系，大一至大三歷年學業成績平均需達 <span class="highlight">70 分（含）以上</span>。</li>
+            <li><strong>晉升條件（5 月考核）：</strong> 通過 3 個月試用期考核、取得大學畢業證書、考取 <span class="highlight">4 張必備金融證照</span>。
+                <br><em>（證照包含：金融市場常識、信託業務員、財產保險業務員、人身保險業務員。實習入職期間考取公司提供全額報名費補助）</em>
+            </li>
+        </ul>
+
+        <h4>二、 重要時程規劃</h4>
+        <div class="table-responsive">
+            <table>
+                <tr><th>時間點</th><th>應完成事項 / 重要日程</th></tr>
+                <tr><td>即日起～10月底</td><td><strong>履歷投遞：</strong> 採隨到隨審，請至招募網站投遞「第 31 屆作業人員」。</td></tr>
+                <tr><td>10 月中下旬起</td><td><strong>面試與意願調查：</strong> 面試並填寫分行區域意願調查表，面試後約一週通知結果。</td></tr>
+                <tr><td>12 月中旬</td><td><strong>簽約與分發：</strong> 進行簽約並通知分發單位。</td></tr>
+                <tr><td>2027/01/18</td><td><strong>正式報到：</strong> 開始為期一週的集中培訓與分行見習。</td></tr>
+                <tr><td>2027/05</td><td><strong>晉升考核：</strong> 確認證照與畢業資格，考核通過畢業直接晉升正職調薪。</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 3. 國泰世華銀行 -->
+    <div id="cathay" class="tab-content">
+        <div class="info-card">
+            <h3>國泰世華銀行——下學期企業實習重點摘要</h3>
+        </div>
+
+        <h4>一、 核心招募資訊</h4>
+        <ul>
+            <li><strong>實習薪資（時薪制）：</strong>
+                <ul>
+                    <li>學士生：<span class="highlight">210 元/小時</span>。</li>
+                    <li>碩士生：<span class="highlight">220 元/小時</span>。</li>
+                </ul>
+            </li>
+            <li><strong>休假與福利：</strong> 依勞基法規定給假，享完整福委會福利（如三節禮金）；可免費享用 Hahow 及國泰學習網線上課程。</li>
+            <li><strong>開放職缺：</strong>
+                <ul>
+                    <li><strong>全功能櫃員（主要職缺）：</strong> 第一線客戶服務引導、Cube APP 數位推廣、存提匯款等銀行基礎業務。亦可觀摩理專與授信工作。全台 165 間分行（主要安排於雙北地區）。</li>
+                    <li><strong>電話客服人員：</strong> 接聽 0800 免付費專線（主要設於中區據點）。</li>
+                </ul>
+            </li>
+            <li><strong>實習期間：</strong> <span class="highlight">2027 年 2 月 15 日 至 2027 年 6 月 30 日</span>（配合下學期開學）。</li>
+            <li><strong>出勤天數：</strong> <span class="highlight">每週需實習 4 至 5 天</span>（全天），選定天數可與主管協調。</li>
+            <li><strong>培訓與轉正：</strong> 採專屬 <span class="tag tag-green">Mentor 師徒制</span>帶領；前 2 週完整教育訓練（含電腦系統上機）。實習滿期評鑒通過可直接轉正（轉正率約 <span class="highlight">80%</span>），實習半年年資可連續採計。</li>
+        </ul>
+
+        <h4>二、 重要時程規劃</h4>
+        <div class="table-responsive">
+            <table>
+                <tr><th>時間點</th><th>應完成事項 / 重要日程</th></tr>
+                <tr><td>即日起～10/18 截止</td><td><strong>線上履歷投遞：</strong> 至「國泰人才樹」官網投遞（不收紙本）。</td></tr>
+                <tr><td>11 月初</td><td><strong>履歷篩選通知：</strong> 審核通過者獲邀實體面試。</td></tr>
+                <tr><td>11 月期間</td><td><strong>實體面試：</strong> 進行面試與分行志願調查。</td></tr>
+                <tr><td>11 月底前</td><td><strong>公佈錄取名單：</strong> 確認最終錄取實習名單。</td></tr>
+                <tr><td>2027/02/15</td><td><strong>實習開始：</strong> 展開為期一學期的實習計畫。</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 4. 統一證券 -->
+    <div id="president" class="tab-content">
+        <div class="info-card">
+            <h3>統一證券——下學期企業實習重點摘要</h3>
+        </div>
+
+        <h4>一、 核心招募資訊</h4>
+        <ul>
+            <li><strong>雙軌實習方案與待遇：</strong>
+                <ul>
+                    <li><strong>學習型實習階段：</strong> 每週至少 3 天，提供學習津貼 <span class="highlight">1,100 元/天</span>（含勞保保障，每月實習約 17 天）。</li>
+                    <li><strong>正式聘用階段：</strong> 實習滿 1 個月且考取證照者，經評估可轉正式聘用（最快 4 月起轉正，領正式業務薪資與業績獎金）。</li>
+                </ul>
+            </li>
+            <li><strong>超優質旅遊補助福利：</strong>
+                <ul>
+                    <li>留任滿半年可享旅遊補助，計算公式：<span class="highlight">5,000 元 × EPS + 3,000 元</span>。</li>
+                    <li><em>例：若公司 EPS 為 10 元，最高可獲約 <span class="highlight">53,000 元</span> 出國旅遊補助。春酒頭獎多為數十萬現金。</em></li>
+                </ul>
+            </li>
+            <li><strong>招募職務：</strong> 全方位理財業務員（數位證券業務員，著重社群行銷與網路開發）。</li>
+            <li><strong>職務彈性轉任：</strong> 實習期間若發現不適合業務，經協調有機會轉任分行後線櫃檯或財行人員。</li>
+            <li><strong>實習期間：</strong> <span class="highlight">2027 年 2 月 15 日 至 2027 年 6 月 30 日</span>（過完年後開始）。</li>
+            <li><strong>出勤天數：</strong> 每週至少 <span class="highlight">3 天</span>（可配合學校課程排班）。</li>
+            <li><strong>門檻與建議：</strong> 入職前不強求證照（進來後需積極考取初級普業）；建議男同學（特別是 94 年次役男）於履歷展現積極度與對業務行銷的熱忱。</li>
+        </ul>
+
+        <h4>二、 重要時程規劃</h4>
+        <div class="table-responsive">
+            <table>
+                <tr><th>時間點</th><th>應完成事項 / 重要日程</th></tr>
+                <tr><td>即日起～12月底前</td><td><strong>履歷投遞與聯繫：</strong> 寄送履歷或掃描專案經理 LINE 進行諮詢預約。</td></tr>
+                <tr><td>11月～12月</td><td><strong>分行面試：</strong> 安排至預計實習分行面試（台北或桃園等地）。</td></tr>
+                <tr><td>2027/02/15</td><td><strong>實習開始：</strong> 展開實務觀摩與數位社群開發訓練。</td></tr>
+                <tr><td>2027/04 以前</td><td><strong>目標轉正：</strong> 考取證照並展現積極度，爭取提報轉正式員工。</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 5. 四家綜合比較表 -->
+    <div id="comparison" class="tab-content">
+        <div class="info-card">
+            <h3>四家金融機構實習計畫綜合比較表</h3>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>比較項目</th>
+                        <th>群益金鼎證券</th>
+                        <th>永豐銀行</th>
+                        <th>國泰世華銀行</th>
+                        <th>統一證券</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>機構類型</strong></td>
+                        <td>獨立證券商</td>
+                        <td>金控銀行</td>
+                        <td>金控銀行</td>
+                        <td>集團證券商</td>
+                    </tr>
+                    <tr>
+                        <td><strong>主要招募職缺</strong></td>
+                        <td>全方位理財經紀人</td>
+                        <td>分行作業人員 / 作業中心人員</td>
+                        <td>全功能櫃員 / 電話客服</td>
+                        <td>全方位理財業務員</td>
+                    </tr>
+                    <tr>
+                        <td><strong>實習薪資待遇</strong></td>
+                        <td>
+                            • 有證照：<strong>31,000 元/月</strong><br>
+                            • 無證照：10,000 元/月<br>
+                            • 留任轉正：37,000 元/月起
+                        </td>
+                        <td>
+                            • <strong>32,000 元/月</strong>（含 3k 津貼）<br>
+                            • <strong>採正職聘用</strong>，享年終績效獎金與完整正職福利
+                        </td>
+                        <td>
+                            • 學士：<strong>210 元/小時</strong><br>
+                            • 碩士：<strong>220 元/小時</strong><br>
+                            • 享福委會福利與線上學習資源
+                        </td>
+                        <td>
+                            • 學習型：<strong>1,100 元/天</strong>（含勞保）<br>
+                            • 轉正後：領正式業務薪資+高額獎金+優渥旅遊補助
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>必備證照要求</strong></td>
+                        <td><strong>2 張</strong>（金融道德、證券業務員）</td>
+                        <td><strong>4 張</strong>（金融道德、信託、產險、壽險；晉升前需備齊）</td>
+                        <td>無強制預先要求（採入職後培訓）</td>
+                        <td>入職前無強制，實習期間需考取證券業務員以利轉正</td>
+                    </tr>
+                    <tr>
+                        <td><strong>實習期間</strong></td>
+                        <td>2027年寒假起～2027/06/30</td>
+                        <td><strong>2027/01/18 ～ 2027/06/30</strong><br>（避開過年忙碌期提前培訓）</td>
+                        <td>2027/02/15 ～ 2027/06/30</td>
+                        <td>2027/02/15 ～ 2027/06/30</td>
+                    </tr>
+                    <tr>
+                        <td><strong>每週出勤天數</strong></td>
+                        <td>彈性（配合學校課務請假）</td>
+                        <td><strong>週一至週五全時段</strong>（08:45-17:45）</td>
+                        <td><strong>每週 4 ~ 5 天</strong>（全天）</td>
+                        <td><strong>每週至少 3 天</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>工作作息特色</strong></td>
+                        <td><strong>07:40 到班 / 16:00 下班</strong>（早收盤早下班）</td>
+                        <td>標準銀行行舍工時（08:45 - 17:45）</td>
+                        <td>標準銀行分行工時（具彈性工時機制）</td>
+                        <td>盤中彈性規劃，著重數位社群行銷開發</td>
+                    </tr>
+                    <tr>
+                        <td><strong>後續轉正與年資</strong></td>
+                        <td>表現優異可直接留任正職</td>
+                        <td>5月通過考核直接晉升正職，<strong>實習年資直接採計</strong></td>
+                        <td>通過評鑒可轉正（<strong>轉正率約 80%</strong>），年資連續計算</td>
+                        <td>實習滿1個月+具證照，最快 4 月可提報轉正式員工</td>
+                    </tr>
+                    <tr>
+                        <td><strong>轉任後線彈性</strong></td>
+                        <td>可向經理人提出協助轉任行政職</td>
+                        <td>職缺分為前檯存匯與後檯作業中心</td>
+                        <td>以櫃員第一線為主，可於實習時觀摩理專/授信</td>
+                        <td>若不適應業務，可協調轉任分行後線/財行人員</td>
+                    </tr>
+                    <tr>
+                        <td><strong>申請截止時間</strong></td>
+                        <td><strong>12 月底前考取證照</strong>（期中考後面試）</td>
+                        <td><strong>10 月底截止</strong>（隨到隨審）</td>
+                        <td><span class="highlight">10 月 18 日截止</span></td>
+                        <td><strong>12 月底前</strong>完成履歷與面試預約</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].classList.remove("active");
+        }
+        tablinks = document.getElementsByClassName("nav-link");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+
+</body>
+</html>
