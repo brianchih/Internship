@@ -11,7 +11,7 @@
       --text: #1f2428;
       --muted: #57606a;
       --border: #d8dee4;
-      --bg-soft: #f6f8fa;
+      --badge-bg: #eef4fa;
     }
 
     * {
@@ -166,7 +166,7 @@
     }
 
     .pub-list li {
-      margin-bottom: 8px;
+      margin-bottom: 9px;
       text-align: left;
     }
 
@@ -180,12 +180,29 @@
       font-style: italic;
     }
 
-    .placeholder {
-      color: #6e7781;
-      background: var(--bg-soft);
-      padding: 1px 5px;
+    .index-tag {
+      display: inline-block;
+      font-size: 8.6pt;
+      font-weight: 700;
+      color: var(--primary);
+      background-color: var(--badge-bg);
+      border: 1px solid #c6d7e8;
       border-radius: 3px;
-      font-size: 9.2pt;
+      padding: 0 5px;
+      margin-left: 4px;
+      vertical-align: baseline;
+    }
+
+    .corr-note {
+      font-size: 9pt;
+      font-weight: 600;
+      color: var(--accent);
+      margin-left: 4px;
+    }
+
+    .grant-meta {
+      font-size: 9.3pt;
+      color: var(--muted);
     }
 
     @media print {
@@ -238,13 +255,13 @@
         <span class="cv-label">Curriculum Vitae</span>
       </div>
       <div class="affiliation-line">
-        教授（Professor），經濟學系（Department of Economics），淡江大學（Tamkang University）
+        教授（Professor），經濟學系／原產業經濟學系（Department of Economics），淡江大學（Tamkang University）
       </div>
       <div class="contact-line">
+        <span>Office: 商館 B808（251301 新北市淡水區英專路 151 號）</span>
         <span>Email: <a href="mailto:chie@mail.tku.edu.tw">chie@mail.tku.edu.tw</a></span>
-        <span>Department: <a href="https://www.econ.tku.edu.tw/econ/?tkumembers=池秉聰">Tamkang Dept. of Economics</a></span>
-        <span>Phone / Office: <span class="placeholder">[請填寫辦公室分機／研究室]</span></span>
-        <span>Google Scholar / ORCID: <span class="placeholder">[請填寫連結或 ID]</span></span>
+        <span>ORCID: <a href="https://orcid.org/0000-0002-9398-7355">0000-0002-9398-7355</a></span>
+        <span>Web: <a href="https://www.econ.tku.edu.tw/econ/?tkumembers=池秉聰">Tamkang Dept. of Economics</a></span>
       </div>
     </header>
 
@@ -263,16 +280,23 @@
       <div class="entry-row">
         <div class="entry-main">
           <div class="entry-title">Ph.D. in Economics（經濟學博士）</div>
-          <div class="entry-sub">National Chengchi University（國立政治大學），Taipei, Taiwan</div>
+          <div class="entry-sub">Department of Economics, National Chengchi University（國立政治大學經濟學系）</div>
         </div>
-        <div class="entry-date"><span class="placeholder">[畢業年份 YYYY]</span></div>
+        <div class="entry-date">2001/08 – 2007/07</div>
       </div>
       <div class="entry-row">
         <div class="entry-main">
-          <div class="entry-title"><span class="placeholder">[碩士學位與主修領域]</span></div>
-          <div class="entry-sub"><span class="placeholder">[畢業學校名稱]</span></div>
+          <div class="entry-title">M.A. in Economics（經濟學碩士）</div>
+          <div class="entry-sub">Department of Economics, National Chengchi University（國立政治大學經濟學系）</div>
         </div>
-        <div class="entry-date"><span class="placeholder">[畢業年份 YYYY]</span></div>
+        <div class="entry-date">1999/09 – 2001/06</div>
+      </div>
+      <div class="entry-row">
+        <div class="entry-main">
+          <div class="entry-title">B.A. in Economics（經濟學學士）</div>
+          <div class="entry-sub">Department of Economics, National Chengchi University（國立政治大學經濟學系）</div>
+        </div>
+        <div class="entry-date">1996/09 – 1999/06</div>
       </div>
     </section>
 
@@ -282,16 +306,23 @@
       <div class="entry-row">
         <div class="entry-main">
           <div class="entry-title">Professor（教授）</div>
-          <div class="entry-sub">Department of Economics, Tamkang University（淡江大學經濟學系）</div>
+          <div class="entry-sub">Department of Economics (formerly Dept. of Industrial Economics), Tamkang University（淡江大學經濟學系／產業經濟學系）</div>
         </div>
-        <div class="entry-date"><span class="placeholder">[YYYY – Present]</span></div>
+        <div class="entry-date">2020/02 – Present</div>
       </div>
       <div class="entry-row">
         <div class="entry-main">
-          <div class="entry-title">Associate Professor / Assistant Professor（副教授／助理教授）</div>
-          <div class="entry-sub">Department of Economics / Dept. of Industrial Economics, Tamkang University（淡江大學）</div>
+          <div class="entry-title">Associate Professor（副教授）</div>
+          <div class="entry-sub">Department of Industrial Economics, Tamkang University（淡江大學產業經濟學系）</div>
         </div>
-        <div class="entry-date"><span class="placeholder">[YYYY – YYYY]</span></div>
+        <div class="entry-date">2015/02 – 2020/02</div>
+      </div>
+      <div class="entry-row">
+        <div class="entry-main">
+          <div class="entry-title">Assistant Professor（助理教授）</div>
+          <div class="entry-sub">Department of Industrial Economics, Tamkang University（淡江大學產業經濟學系）</div>
+        </div>
+        <div class="entry-date">2008/08 – 2015/02</div>
       </div>
     </section>
 
@@ -303,51 +334,59 @@
       <ol class="pub-list">
         <li>
           <span class="pub-year">(2025)</span>
-          Shaw, D., Kuo, Y.-L., Chie, B.-T., Chang, C.-T., Hung, M.-F., Chen, H.-H., &amp; Yuan, T.-Y.
+          Shaw, D., Kuo, Y.-L., <strong>Chie, B.-T.*</strong>, Chang, C.-T., Hung, M.-F., Chen, H.-H., &amp; Yuan, T.-Y.
           Does the future imagination treatment affect people’s pro-environmental intention and donation decisions?
           <span class="pub-venue">Environment, Development and Sustainability</span>.
+          DOI: 10.1007/s10668-025-05967-1.
+          <span class="index-tag">SCIE</span>
+          <span class="corr-note">[Corresponding Author]</span>
         </li>
         <li>
           <span class="pub-year">(2024)</span>
-          Yu, J.-H., &amp; Chie, B.-T.
+          史邦其、白紀齡、<strong>池秉聰</strong>。
+          做自己或成為一分子？社會網絡對消費者效用的影響：代理人基模型之模擬應用。
+          <span class="pub-venue">傳播研究與實踐（Journal of Communication Research and Practice）</span>，14(1)，131–166。
+          <span class="index-tag">TSSCI</span>
+        </li>
+        <li>
+          <span class="pub-year">(2024)</span>
+          Yu, J.-H., &amp; <strong>Chie, B.-T.</strong>
           Interplay and Implications of Urban Renewal under Dual Laws - An Agent-Based Simulation.
           <span class="pub-venue">Advances in Management &amp; Applied Economics</span>.
         </li>
         <li>
-          <span class="pub-year">(2024)</span>
-          史邦其、白紀齡、池秉聰。
-          做自己或成為一分子？社會網絡對消費者效用的影響：代理人基模型之模擬應用。
-          <span class="pub-venue">傳播研究與實踐（Journal of Communication Research and Practice）</span>。
-        </li>
-        <li>
           <span class="pub-year">(2023)</span>
-          Grossmann, I., Rotella, A., Hutcherson, C., Sharpinskyi, K., Varnum, M. E. W., Achter, S., ..., Chie, B.-T., ..., &amp; Wilkening, T.
+          Grossmann, I., Rotella, A., Hutcherson, C., Sharpinskyi, K., Varnum, M. E. W., Achter, S., ..., <strong>Chie, B.-T.</strong>, ..., &amp; Wilkening, T.
           Insights into accuracy of social scientists' forecasts of societal change.
-          <span class="pub-venue">Nature Human Behaviour</span>.
+          <span class="pub-venue">Nature Human Behaviour</span>, 7, 484–501.
+          <span class="index-tag">SSCI / SCIE</span>
         </li>
         <li>
           <span class="pub-year">(2022)</span>
-          Chen, Y., Huang, P., Ku, Y., Ni, Y., Chie, B.-T., &amp; Lin, Y.-T.
-          Does ownership structure matter for overshooting anipulation of hospitality and tourism stocks?
-          <span class="pub-venue">Heliyon</span>.
+          Chen, Y., Huang, P., Ku, Y., Ni, Y., <strong>Chie, B.-T.</strong>, &amp; Lin, Y.-T.
+          Does ownership structure matter for overshooting manipulation of hospitality and tourism stocks?
+          <span class="pub-venue">Heliyon</span>, 8(2022), e11544.
+          <span class="index-tag">SCIE</span>
         </li>
         <li>
           <span class="pub-year">(2022)</span>
-          Huang, Y.-C., Cheng, T.-Y., &amp; Chie, B.-T.
+          Huang, Y.-C., Cheng, T.-Y., &amp; <strong>Chie, B.-T.</strong>
           The Effect of Dishonest Sellers on E-commerce: An Agent-Based Modeling Approach.
           <span class="pub-venue">Advances in Management &amp; Applied Economics</span>.
         </li>
         <li>
           <span class="pub-year">(2021)</span>
-          Chie, B.-T., &amp; Yang, C.-H.
-          Efficiency of the Experimental Prediction Market: Public Information, Belief Evolution, and Personality Traits.
-          <span class="pub-venue">Advances in Management and Applied Economics</span>, 11(4), 39–59.
+          Hsu, W.-J., &amp; <strong>Chie, B.-T.*</strong>
+          How do advantage players exploit casinos’ premium offers? Simulations and solutions.
+          <span class="pub-venue">International Gambling Studies</span>, 21(1), 74–91.
+          <span class="index-tag">SSCI</span>
+          <span class="corr-note">[Corresponding Author]</span>
         </li>
         <li>
           <span class="pub-year">(2021)</span>
-          Hsu, W.-J., &amp; Chie, B.-T.
-          How do advantage players exploit casinos’ premium offers? Simulations and solutions.
-          <span class="pub-venue">International Gambling Studies</span>, 21(1), 74–91.
+          <strong>Chie, B.-T.</strong>, &amp; Yang, C.-H.
+          Efficiency of the Experimental Prediction Market: Public Information, Belief Evolution, and Personality Traits.
+          <span class="pub-venue">Advances in Management and Applied Economics</span>, 11(4), 39–59.
         </li>
       </ol>
 
@@ -355,31 +394,67 @@
       <ol class="pub-list">
         <li>
           <span class="pub-year">(2025)</span>
-          Chie, B.-T.
+          <strong>Chie, B.-T.</strong>
           The Impact of Monetary Policy on Trust-Based Economic Network.
           <span class="pub-venue">6th World Conference on Management and Economics</span>, Finland, July 10–12, 2025.
-        </li>
-        <li>
-          <span class="placeholder">[若有其他 2021–2026 年研討會論文，請依「作者（年份）。題目。研討會名稱，地點／日期。」補充於此]</span>
         </li>
       </ol>
     </section>
 
-    <!-- 6. 教學、研究計畫與學術服務 -->
-    <section id="teaching-grants-service">
-      <h2>Teaching, Grants &amp; Academic Service</h2>
+    <!-- 6. 國科會／科技部專題研究計畫 -->
+    <section id="grants">
+      <h2>Research Grants (NSTC / MOST)</h2>
       <ul class="item-list">
         <li>
-          <strong>Teaching:</strong>
-          個體經濟理論（一）（博士班）、價格理論與實務（碩士班）、管理經濟學、財務經濟學、管制經濟學、產業分析實作、產業實務實習（一）
+          <strong>115 年度：</strong>預見臺灣人口未來：數據驅動的數位雙生與結構韌性轉型
+          <span class="grant-meta">（專題研究計畫／一般研究計畫，計畫主持人，NTD 710,000）</span>
         </li>
         <li>
-          <strong>Research Grants:</strong>
-          國科會研究計畫：預見臺灣人口未來：數據驅動的數位雙生與結構韌性轉型（115 學年度第 1 學期起）；<span class="placeholder">[可補充其他近五年國科會／NSTC 計畫編號與起迄]</span>
+          <strong>113 年度：</strong>創新驅動下的經濟分配演變：基於演化模組化經濟的代理人基建模研究
+          <span class="grant-meta">（專題研究計畫／一般研究計畫，計畫主持人，NTD 471,000）</span>
         </li>
         <li>
-          <strong>Thesis Advising &amp; Service:</strong>
-          指導碩博士論文；系所與學術服務（<span class="placeholder">[例如：期刊審查人、學會或系所委員會職務，可選填]</span>）
+          <strong>112 年度：</strong>自動化交易策略對市場之影響
+          <span class="grant-meta">（專題研究計畫／一般研究計畫，計畫主持人，NTD 438,000）</span>
+        </li>
+        <li>
+          <strong>106 年度：</strong>選擇強度的行為及神經基礎：兼談其異質性及情境相依性
+          <span class="grant-meta">（專題研究計畫／一般研究計畫，共同主持人，NTD 2,325,000）</span>
+        </li>
+        <li>
+          <strong>104 年度：</strong>判定選舉預測市場之準確度：預測準確度、鑑別模型與最適價格門檻
+          <span class="grant-meta">（專題研究計畫／學術性專書寫作計畫，共同主持人，NTD 1,698,000）</span>
+        </li>
+        <li>
+          <strong>102 年度：</strong>政府公共政策與企業發展政策的創新與評鑑：創意市場的開發與運用
+          <span class="grant-meta">（專題研究計畫／一般研究計畫，共同主持人，NTD 1,476,000）</span>
+        </li>
+        <li>
+          <strong>98 年度：</strong>認知、心理、與文化因子突現性複雜現象：整合代理人基計算經濟學、實驗經濟學、與腦神經經濟學之研究架構—子計畫二：軟體代理人模擬計畫
+          <span class="grant-meta">（專題研究計畫／新進人員研究計畫，計畫主持人，NTD 2,337,000）</span>
+        </li>
+        <li>
+          <strong>97 年度：</strong>從模組化偏好到科技創新：代理人基建模方法
+          <span class="grant-meta">（專題研究計畫／新進人員研究計畫，計畫主持人，NTD 569,000）</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 7. 教學與學術服務 -->
+    <section id="teaching-service">
+      <h2>Teaching Experience</h2>
+      <ul class="item-list">
+        <li>
+          <strong>Doctoral Level（博士班）：</strong>
+          個體經濟理論（一）、個體經濟理論（二）
+        </li>
+        <li>
+          <strong>Master’s Level（碩士班）：</strong>
+          個體經濟理論、智慧經濟與商業創新、價格理論與實務
+        </li>
+        <li>
+          <strong>Undergraduate Level（大學部）：</strong>
+          財務經濟學、管理經濟學、管制經濟學、個體經濟專題（一）、ＡＩ與經濟研究報告、產業分析實作、企業實習、產業實務實習（一）
         </li>
       </ul>
     </section>
