@@ -12,6 +12,7 @@
       --muted: #57606a;
       --border: #d8dee4;
       --badge-bg: #eef4fa;
+      --row-alt: #f9fbfd;
     }
 
     * {
@@ -26,11 +27,75 @@
       background-color: #eef2f6;
       line-height: 1.56;
       font-size: 10.2pt;
-      padding: 28px 16px;
+      padding: 24px 16px 40px;
+    }
+
+    /* 頂部控制列（僅螢幕顯示，列印自動隱藏） */
+    .control-bar {
+      max-width: 900px;
+      margin: 0 auto 16px;
+      background: #ffffff;
+      padding: 12px 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      border-left: 4px solid var(--accent);
+    }
+
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .control-label {
+      font-size: 9.5pt;
+      font-weight: 600;
+      color: var(--primary);
+      margin-right: 4px;
+    }
+
+    .btn {
+      border: 1px solid var(--border);
+      background: #f8fafc;
+      color: var(--text);
+      padding: 6px 14px;
+      font-size: 9.3pt;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn:hover {
+      background: #eef4fa;
+      border-color: var(--accent);
+    }
+
+    .btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .btn-print {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    .btn-print:hover {
+      background: var(--primary);
+      border-color: var(--primary);
     }
 
     .cv-container {
-      max-width: 860px;
+      max-width: 900px;
       margin: 0 auto;
       background: #ffffff;
       padding: 44px 52px;
@@ -93,7 +158,7 @@
     }
 
     section {
-      margin-top: 20px;
+      margin-top: 22px;
     }
 
     h2 {
@@ -105,13 +170,26 @@
       border-bottom: 1px solid var(--border);
       padding-bottom: 4px;
       margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .section-badge {
+      font-size: 8.8pt;
+      font-weight: 500;
+      color: var(--muted);
+      text-transform: none;
+      letter-spacing: 0;
+      white-space: nowrap;
     }
 
     h3 {
       font-size: 10.2pt;
       font-weight: 700;
       color: var(--accent);
-      margin-top: 12px;
+      margin-top: 14px;
       margin-bottom: 6px;
     }
 
@@ -162,11 +240,11 @@
     }
 
     .pub-list {
-      padding-left: 20px;
+      padding-left: 22px;
     }
 
     .pub-list li {
-      margin-bottom: 9px;
+      margin-bottom: 8px;
       text-align: left;
     }
 
@@ -182,7 +260,7 @@
 
     .index-tag {
       display: inline-block;
-      font-size: 8.6pt;
+      font-size: 8.4pt;
       font-weight: 700;
       color: var(--primary);
       background-color: var(--badge-bg);
@@ -194,7 +272,7 @@
     }
 
     .corr-note {
-      font-size: 9pt;
+      font-size: 8.8pt;
       font-weight: 600;
       color: var(--accent);
       margin-left: 4px;
@@ -205,11 +283,70 @@
       color: var(--muted);
     }
 
+    /* 簡化彙整後的曾任課程列表 */
+    .course-summary-list {
+      list-style: none;
+      margin-top: 6px;
+    }
+
+    .course-summary-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      padding: 6px 10px;
+      border-bottom: 1px solid #eef2f6;
+      font-size: 9.8pt;
+    }
+
+    .course-summary-list li.visible-course-row:nth-child(odd) {
+      background-color: #ffffff;
+    }
+
+    .course-summary-list li.visible-course-row:nth-child(even) {
+      background-color: var(--row-alt);
+    }
+
+    .course-name-group {
+      flex: 1;
+    }
+
+    .course-title {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .course-dept {
+      font-size: 9pt;
+      color: var(--muted);
+      margin-left: 6px;
+    }
+
+    .course-period {
+      font-size: 9.3pt;
+      color: var(--accent);
+      font-weight: 600;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .hidden-item {
+      display: none !important;
+    }
+
     @media print {
+      @page {
+        margin: 14mm 12mm;
+      }
+
       body {
         background: #ffffff;
         padding: 0;
-        font-size: 9.8pt;
+        font-size: 9.4pt;
+      }
+
+      .control-bar {
+        display: none !important;
       }
 
       .cv-container {
@@ -224,22 +361,24 @@
         text-decoration: none !important;
       }
 
-      section {
+      .pub-list li,
+      .entry-row,
+      .course-summary-list li {
         break-inside: avoid;
       }
 
-      .pub-list li,
-      .entry-row {
-        break-inside: avoid;
+      h2, h3 {
+        break-after: avoid;
       }
     }
 
     @media (max-width: 640px) {
       .cv-container {
-        padding: 24px 20px;
+        padding: 24px 18px;
       }
 
-      .entry-row {
+      .entry-row,
+      .course-summary-list li {
         flex-direction: column;
         gap: 2px;
       }
@@ -247,6 +386,18 @@
   </style>
 </head>
 <body>
+  <!-- 統一控制列（同時切換著作與曾任課程的「近五年 / 全部」，列印 PDF 時自動隱藏） -->
+  <div class="control-bar">
+    <div class="control-group">
+      <span class="control-label">履歷檢視範圍：</span>
+      <button type="button" id="btn-5yr" class="btn active" onclick="setRange('5yr')">近五年（2021–2026 / 110–115學年）</button>
+      <button type="button" id="btn-all" class="btn" onclick="setRange('all')">全部歷年（2004–2026 / 97–115學年）</button>
+    </div>
+    <div class="control-group">
+      <button type="button" class="btn btn-print" onclick="window.print()">列印 / 另存 PDF</button>
+    </div>
+  </div>
+
   <main class="cv-container">
     <!-- 1. 基本資料與聯絡資訊 -->
     <header>
@@ -255,7 +406,7 @@
         <span class="cv-label">Curriculum Vitae</span>
       </div>
       <div class="affiliation-line">
-        教授（Professor），經濟學系（Department of Economics），淡江大學（Tamkang University）
+        教授（Professor），經濟學系／原產業經濟學系（Department of Economics），淡江大學（Tamkang University）
       </div>
       <div class="contact-line">
         <span>Office: 商館 B808（251301 新北市淡水區英專路 151 號）</span>
@@ -324,88 +475,326 @@
         </div>
         <div class="entry-date">2008/08 – 2015/02</div>
       </div>
+
+      <div class="range-item" data-range="all">
+        <h3>Past Academic Works, Adjunct &amp; Teaching Assistant Appointments（歷年學術工作、兼課與助教經歷）</h3>
+        <ul class="item-list">
+          <li>
+            <strong>Adjunct Lecturer</strong>, Department of Public Finance and Tax Administration, National Taipei College of Business（國立臺北商業專科學校財政稅務科兼任講師）
+            <span class="grant-meta">（2004–2006）</span>
+          </li>
+          <li>
+            <strong>Tutor in Economics</strong>, Learning Resource Center and Department of Economics, National Chengchi University（國立政治大學經濟學系及學習資源中心經濟學輔導助教）
+            <span class="grant-meta">（2005–2006）</span>
+          </li>
+          <li>
+            <strong>Teaching Assistant in Macroeconomics</strong>, Department of Economics, National Chengchi University（國立政治大學經濟學系總體經濟學助教）
+            <span class="grant-meta">（2005–2006）</span>
+          </li>
+          <li>
+            <strong>Teaching Assistant in Advanced Statistics</strong>, Department of Statistics, National Chengchi University（國立政治大學統計學系高等統計學助教）
+            <span class="grant-meta">（2002–2005）</span>
+          </li>
+          <li>
+            <strong>Teaching Assistant in Calculus</strong>, Department of Economics, National Chengchi University（國立政治大學經濟學系微積分助教）
+            <span class="grant-meta">（1999–2001）</span>
+          </li>
+        </ul>
+      </div>
     </section>
 
-    <!-- 5. 近五年著作（2021–2026）：期刊論文與研討會論文 -->
+    <!-- 5. 著作目錄 -->
     <section id="publications">
-      <h2>Publications (Last 5 Years: 2021–2026)</h2>
+      <h2>
+        <span id="pub-section-title">Publications (Last 5 Years: 2021–2026)</span>
+        <span id="pub-count-badge" class="section-badge"></span>
+      </h2>
 
-      <h3>Refereed Journal Articles</h3>
-      <ol class="pub-list">
-        <li>
-          <span class="pub-year">(2026)</span>
-          Kuo, Y.-L., Wu, W.-C., Shaw, D., <strong>Chie, B.-T.</strong>, Chang, Y.-T., Chuang, Y.-L., Liu, Y.-L., et al.
-          The impact of imaginary future generations on the preference for carbon tax schemes.
-          <span class="pub-venue">PLOS ONE</span>, 21(4), e0346904.
-          <span class="index-tag">SCIE</span>
-        </li>
-        <li>
-          <span class="pub-year">(2025)</span>
-          Shaw, D., Kuo, Y.-L., <strong>Chie, B.-T.*</strong>, Chang, C.-T., Hung, M.-F., Chen, H.-H., &amp; Yuan, T.-Y.
-          Does the future imagination treatment affect people’s pro-environmental intention and donation decisions?
-          <span class="pub-venue">Environment, Development and Sustainability</span>.
-          DOI: 10.1007/s10668-025-05967-1.
-          <span class="index-tag">SCIE</span>
-          <span class="corr-note">[Corresponding Author]</span>
-        </li>
-        <li>
-          <span class="pub-year">(2024)</span>
-          史邦其、白紀齡、<strong>池秉聰</strong>。
-          做自己或成為一分子？社會網絡對消費者效用的影響：代理人基模型之模擬應用。
-          <span class="pub-venue">傳播研究與實踐（Journal of Communication Research and Practice）</span>，14(1)，131–166。
-          <span class="index-tag">TSSCI</span>
-        </li>
-        <li>
-          <span class="pub-year">(2024)</span>
-          Yu, J.-H., &amp; <strong>Chie, B.-T.</strong>
-          Interplay and Implications of Urban Renewal under Dual Laws - An Agent-Based Simulation.
-          <span class="pub-venue">Advances in Management &amp; Applied Economics</span>.
-        </li>
-        <li>
-          <span class="pub-year">(2023)</span>
-          Grossmann, I., Rotella, A., Hutcherson, C., Sharpinskyi, K., Varnum, M. E. W., Achter, S., ..., <strong>Chie, B.-T.</strong>, ..., &amp; Wilkening, T.
-          Insights into accuracy of social scientists' forecasts of societal change.
-          <span class="pub-venue">Nature Human Behaviour</span>, 7, 484–501.
-          <span class="index-tag">SSCI / SCIE</span>
-        </li>
-        <li>
-          <span class="pub-year">(2022)</span>
-          Chen, Y., Huang, P., Ku, Y., Ni, Y., <strong>Chie, B.-T.</strong>, &amp; Lin, Y.-T.
-          Does ownership structure matter for overshooting manipulation of hospitality and tourism stocks?
-          <span class="pub-venue">Heliyon</span>, 8(2022), e11544.
-          <span class="index-tag">SCIE</span>
-        </li>
-        <li>
-          <span class="pub-year">(2022)</span>
-          Huang, Y.-C., Cheng, T.-Y., &amp; <strong>Chie, B.-T.</strong>
-          The Effect of Dishonest Sellers on E-commerce: An Agent-Based Modeling Approach.
-          <span class="pub-venue">Advances in Management &amp; Applied Economics</span>.
-        </li>
-        <li>
-          <span class="pub-year">(2021)</span>
-          Hsu, W.-J., &amp; <strong>Chie, B.-T.*</strong>
-          How do advantage players exploit casinos’ premium offers? Simulations and solutions.
-          <span class="pub-venue">International Gambling Studies</span>, 21(1), 74–91.
-          <span class="index-tag">SSCI</span>
-          <span class="corr-note">[Corresponding Author]</span>
-        </li>
-        <li>
-          <span class="pub-year">(2021)</span>
-          <strong>Chie, B.-T.</strong>, &amp; Yang, C.-H.
-          Efficiency of the Experimental Prediction Market: Public Information, Belief Evolution, and Personality Traits.
-          <span class="pub-venue">Advances in Management and Applied Economics</span>, 11(4), 39–59.
-        </li>
-      </ol>
+      <!-- 5.1 期刊論文 -->
+      <div class="pub-category" id="cat-journal">
+        <h3>Refereed Journal Articles（期刊論文）</h3>
+        <ol class="pub-list">
+          <li data-year="2026">
+            <span class="pub-year">(2026)</span>
+            Kuo, Y.-L., Wu, W.-C., Shaw, D., <strong>Chie, B.-T.</strong>, Chang, Y.-T., Chuang, Y.-L., Liu, Y.-L., et al.
+            The impact of imaginary future generations on the preference for carbon tax schemes.
+            <span class="pub-venue">PLOS ONE</span>, 21(4), e0346904.
+            <span class="index-tag">SCIE</span>
+          </li>
+          <li data-year="2025">
+            <span class="pub-year">(2025)</span>
+            Shaw, D., Kuo, Y.-L., <strong>Chie, B.-T.*</strong>, Chang, C.-T., Hung, M.-F., Chen, H.-H., &amp; Yuan, T.-Y.
+            Does the future imagination treatment affect people’s pro-environmental intention and donation decisions?
+            <span class="pub-venue">Environment, Development and Sustainability</span>.
+            DOI: 10.1007/s10668-025-05967-1.
+            <span class="index-tag">SCIE</span>
+            <span class="corr-note">[Corresponding Author]</span>
+          </li>
+          <li data-year="2024">
+            <span class="pub-year">(2024)</span>
+            史邦其、白紀齡、<strong>池秉聰</strong>。
+            做自己或成為一分子？社會網絡對消費者效用的影響：代理人基模型之模擬應用。
+            <span class="pub-venue">傳播研究與實踐（Journal of Communication Research and Practice）</span>，14(1)，131–166。
+            <span class="index-tag">TSSCI</span>
+          </li>
+          <li data-year="2024">
+            <span class="pub-year">(2024)</span>
+            Yu, J.-H., &amp; <strong>Chie, B.-T.</strong>
+            Interplay and Implications of Urban Renewal under Dual Laws - An Agent-Based Simulation.
+            <span class="pub-venue">Advances in Management &amp; Applied Economics</span>.
+          </li>
+          <li data-year="2023">
+            <span class="pub-year">(2023)</span>
+            Grossmann, I., Rotella, A., Hutcherson, C., Sharpinskyi, K., Varnum, M. E. W., Achter, S., ..., <strong>Chie, B.-T.</strong>, ..., &amp; Wilkening, T.
+            Insights into accuracy of social scientists' forecasts of societal change.
+            <span class="pub-venue">Nature Human Behaviour</span>, 7, 484–501.
+            <span class="index-tag">SSCI / SCIE</span>
+          </li>
+          <li data-year="2022">
+            <span class="pub-year">(2022)</span>
+            Chen, Y., Huang, P., Ku, Y., Ni, Y., <strong>Chie, B.-T.</strong>, &amp; Lin, Y.-T.
+            Does ownership structure matter for overshooting manipulation of hospitality and tourism stocks?
+            <span class="pub-venue">Heliyon</span>, 8(2022), e11544.
+            <span class="index-tag">SCIE</span>
+          </li>
+          <li data-year="2022">
+            <span class="pub-year">(2022)</span>
+            Huang, Y.-C., Cheng, T.-Y., &amp; <strong>Chie, B.-T.</strong>
+            The Effect of Dishonest Sellers on E-commerce: An Agent-Based Modeling Approach.
+            <span class="pub-venue">Advances in Management &amp; Applied Economics</span>.
+          </li>
+          <li data-year="2021">
+            <span class="pub-year">(2021)</span>
+            Hsu, W.-J., &amp; <strong>Chie, B.-T.*</strong>
+            How do advantage players exploit casinos’ premium offers? Simulations and solutions.
+            <span class="pub-venue">International Gambling Studies</span>, 21(1), 74–91.
+            <span class="index-tag">SSCI</span>
+            <span class="corr-note">[Corresponding Author]</span>
+          </li>
+          <li data-year="2021">
+            <span class="pub-year">(2021)</span>
+            <strong>Chie, B.-T.</strong>, &amp; Yang, C.-H.
+            Efficiency of the Experimental Prediction Market: Public Information, Belief Evolution, and Personality Traits.
+            <span class="pub-venue">Advances in Management and Applied Economics</span>, 11(4), 39–59.
+          </li>
+          <!-- 2020 及以前期刊論文 -->
+          <li data-year="2020">
+            <span class="pub-year">(2020)</span>
+            Hung, M.-F., <strong>Chie, B.-T.*</strong>, &amp; Liao, H.-C.
+            A Comparison of Electricity-Pricing Programs: Economic Efficiency, Cost Recovery, and Income Distribution.
+            <span class="pub-venue">Review of Industrial Organization</span>, 56(1), 143–163.
+            <span class="index-tag">SSCI</span>
+            <span class="corr-note">[Corresponding Author]</span>
+          </li>
+          <li data-year="2019">
+            <span class="pub-year">(2019)</span>
+            Chen, S.-H., <strong>Chie, B.-T.</strong>, Kao, Y.-F., &amp; Venkatachalam, R.
+            Agent-Based Modeling of a Non-tâtonnement Process for the Scarf Economy: The Role of Learning.
+            <span class="pub-venue">Computational Economics</span>, 54(1), 305–341.
+            <span class="index-tag">SSCI</span>
+          </li>
+          <li data-year="2019">
+            <span class="pub-year">(2019)</span>
+            Tai, C.-C., Lin, H.-W., <strong>Chie, B.-T.</strong>, &amp; Tung, C.-Y.
+            Predicting the failures of prediction markets: A procedure of decision making using classification models.
+            <span class="pub-venue">International Journal of Forecasting</span>, 35(1), 297–312.
+            <span class="index-tag">SSCI</span>
+          </li>
+          <li data-year="2018">
+            <span class="pub-year">(2018)</span>
+            <strong>池秉聰</strong>、楊志華。
+            中古車市場的動態模擬：代理人基建模方法之應用。
+            <span class="pub-venue">系統思考與管理（Journal of Systems Thinking and Management）</span>。
+          </li>
+          <li data-year="2017">
+            <span class="pub-year">(2017)</span>
+            Hung, M.-F., &amp; <strong>Chie, B.-T.</strong>
+            The long-run performance of increasing-block pricing in Taiwan's residential electricity sector.
+            <span class="pub-venue">Energy Policy</span>, 109, 782–793.
+            <span class="index-tag">SSCI</span>
+          </li>
+          <li data-year="2017">
+            <span class="pub-year">(2017)</span>
+            <strong>池秉聰</strong>、童振源。
+            創意之開發與評鑑：以臺灣一家人壽保險公司之創意市場為例。
+            <span class="pub-venue">產業與管理論壇（Industry and Management Forum）</span>，19(3)，38–66。
+            <span class="index-tag">TSSCI</span>
+          </li>
+          <li data-year="2017">
+            <span class="pub-year">(2017)</span>
+            Wang, C. H., <strong>Chie, B.-T.</strong>, &amp; Chen, S.-H.
+            Transitional student admission mechanism from tracking to mixing: an agent-based policy analysis.
+            <span class="pub-venue">Evolutionary and Institutional Economics Review</span>.
+          </li>
+          <li data-year="2017">
+            <span class="pub-year">(2017)</span>
+            Pai, C.-L., &amp; <strong>Chie, B.-T.</strong>
+            Illegal downloading of pop music among university students in Taiwan: An agent-based model simulation.
+            <span class="pub-venue">Journal of Consumer Behaviour</span>, 16(3), 197–211.
+            <span class="index-tag">SSCI</span>
+          </li>
+          <li data-year="2016">
+            <span class="pub-year">(2016)</span>
+            <strong>Chie, B.-T.</strong>, &amp; Pai, C.-L.
+            An agent-based prediction market: a case study of xFuture in Taiwan.
+            <span class="pub-venue">International Journal of Computational Economics and Econometrics</span>.
+          </li>
+          <li data-year="2016">
+            <span class="pub-year">(2016)</span>
+            戴中擎、<strong>池秉聰</strong>、林鴻文、童振源。
+            判定預測市場之準確度：單一與合併鑑別模型之比較。
+            <span class="pub-venue">經濟論文叢刊（Taiwan Economic Review）</span>，44(3)，413–474。
+            <span class="index-tag">TSSCI</span>
+          </li>
+          <li data-year="2016">
+            <span class="pub-year">(2016)</span>
+            Hung, M.-F., <strong>Chie, B.-T.</strong>, &amp; Huang, T.-H.
+            Residential Water Demand and Water Waste in Taiwan.
+            <span class="pub-venue">Environmental Economics and Policy Studies</span>.
+          </li>
+          <li data-year="2015">
+            <span class="pub-year">(2015)</span>
+            Chen, S.-H., <strong>Chie, B.-T.</strong>, &amp; Zhang, T.
+            Network-Based Trust Games: An Agent-Based Model.
+            <span class="pub-venue">Journal of Artificial Societies and Social Simulation</span>, 18(3), 5.
+            <span class="index-tag">SSCI</span>
+          </li>
+          <li data-year="2015">
+            <span class="pub-year">(2015)</span>
+            <strong>Chie, B.-T.</strong>, &amp; Chen, S.-H.
+            The Use of Knowledge in Prediction Markets: How Much of Them Need He Know?
+            <span class="pub-venue">Journal of Information Science and Engineering</span>.
+          </li>
+          <li data-year="2014">
+            <span class="pub-year">(2014)</span>
+            <strong>Chie, B.-T.</strong>, &amp; Chen, S.-H.
+            Competition in a New Industrial Economy: Toward an Agent-Based Economic Model of Modularity.
+            <span class="pub-venue">Administrative Sciences</span>, 4(3), 192–218.
+          </li>
+          <li data-year="2014">
+            <span class="pub-year">(2014)</span>
+            Hung, M.-F., Shaw, D., &amp; <strong>Chie, B.-T.</strong>
+            Water Trading: Locational Water Rights, Economic Efficiency, and Third-Party Effect.
+            <span class="pub-venue">Water</span>, 6(3), 723–744.
+            <span class="index-tag">SCIE</span>
+          </li>
+          <li data-year="2013">
+            <span class="pub-year">(2013)</span>
+            <strong>Chie, B.-T.</strong>, &amp; Chen, S.-H.
+            Non-Price Competition in a Modular Economy: An Agent-Based Computational Model.
+            <span class="pub-venue">Economia Politica</span>, 30(3), 273–300.
+            <span class="index-tag">SSCI</span>
+          </li>
+          <li data-year="2013">
+            <span class="pub-year">(2013)</span>
+            Hung, M.-F., &amp; <strong>Chie, B.-T.</strong>
+            Residential Water Use: Efficiency, Affordability, and Price Elasticity.
+            <span class="pub-venue">Water Resources Management</span>, 27, 275–291.
+            <span class="index-tag">SCI</span>
+          </li>
+          <li data-year="2012">
+            <span class="pub-year">(2012)</span>
+            <strong>Chie, B.-T.</strong>
+            Personality and Preference: A Laboratory Study.
+            <span class="pub-venue">The Journal of Behavioral Finance &amp; Economics</span>.
+          </li>
+          <li data-year="2008">
+            <span class="pub-year">(2008)</span>
+            Chen, S.-H.*, &amp; <strong>Chie, B.-T.</strong>
+            Lottery markets design, micro-structure, and macro-behavior: An ACE approach.
+            <span class="pub-venue">Journal of Economic Behavior &amp; Organization</span>, 67(2), 463–480.
+            <span class="index-tag">SSCI</span>
+          </li>
+          <li data-year="2006">
+            <span class="pub-year">(2006)</span>
+            Chen, S.-H.*, &amp; <strong>Chie, B.-T.</strong>
+            A Functional Modularity Approach to Agent-based Modeling of the Evolution of Technology.
+            <span class="pub-venue">Lecture Notes in Economics and Mathematical Systems</span>, 567, Springer.
+          </li>
+          <li data-year="2004">
+            <span class="pub-year">(2004)</span>
+            Binner, J.*, Gazely, A., Chen, S.-H., &amp; <strong>Chie, B.-T.*</strong>
+            Financial Innovation and Divisia Money in Taiwan: Comparative Evidence from Neural Network and Vector Error Correction Forecasting Models.
+            <span class="pub-venue">Contemporary Economic Policy</span>, 22(2), 213–224.
+            <span class="index-tag">SSCI</span>
+            <span class="corr-note">[Corresponding Author]</span>
+          </li>
+          <li data-year="2004">
+            <span class="pub-year">(2004)</span>
+            Chen, S.-H.*, &amp; <strong>Chie, B.-T.</strong>
+            Functional Modularity in the Fundamentals of Economic Theory: Toward an Agent-Based Economic Modeling of the Evolution of Technology.
+            <span class="pub-venue">International Journal of Modern Physics B</span>, 18(17n19), 2376–2386.
+            <span class="index-tag">SCI</span>
+          </li>
+        </ol>
+      </div>
 
-      <h3>Conference Papers</h3>
-      <ol class="pub-list">
-        <li>
-          <span class="pub-year">(2025)</span>
-          <strong>Chie, B.-T.</strong>
-          The Impact of Monetary Policy on Trust-Based Economic Network.
-          <span class="pub-venue">6th World Conference on Management and Economics</span>, Finland, July 10–12, 2025.
-        </li>
-      </ol>
+      <!-- 5.2 專書與專書論文 -->
+      <div class="pub-category" id="cat-book">
+        <h3>Books &amp; Book Chapters（專書與專書論文）</h3>
+        <ol class="pub-list">
+          <li data-year="2017">
+            <span class="pub-year">(2017)</span>
+            Chen, S.-H., Kao, Y.-F., <strong>Chie, B.-T.</strong>, Meyer, T., &amp; Venkatachalam, R.
+            Size Effects in Agent-Based Macroeconomic Models: An Initial Investigation.
+            In <span class="pub-venue">Agent-Based Approaches in Economics and Social Complex Systems IX</span>.
+          </li>
+          <li data-year="2015">
+            <span class="pub-year">(2015)</span>
+            Chen, S.-H., &amp; <strong>Chie, B.-T.</strong>
+            Trust, Growth, and Inequality: An Agent-Based Model.
+            In <span class="pub-venue">Agent-Based Approaches in Economic and Social Complex Systems VIII: Post-Proceedings of The AESCS International Workshop 2013</span>.
+          </li>
+          <li data-year="2015">
+            <span class="pub-year">(2015)</span>
+            <strong>Chie, B.-T.</strong>, &amp; Chen, S.-H.
+            Spatial Modeling of Agent-Based Prediction Markets: Role of Individuals.
+            In <span class="pub-venue">Multi-Agent-Based Simulation XV, Lecture Notes in Computer Science</span>.
+          </li>
+          <li data-year="2014">
+            <span class="pub-year">(2014)</span>
+            白紀齡、<strong>池秉聰</strong>。
+            <span class="pub-venue">神經經濟學</span>（學術專書）。
+          </li>
+          <li data-year="2011">
+            <span class="pub-year">(2011)</span>
+            <strong>Chie, B.-T.</strong>, Chen, S.-H., Tung, C.-Y., Tai, C.-C., Chou, T.-C., &amp; Wang, S. G.
+            Prediction Markets: A Study on the Taiwan Experience.
+            In <span class="pub-venue">Prediction Markets: Theory and Applications</span>.
+          </li>
+          <li data-year="2009">
+            <span class="pub-year">(2009)</span>
+            Chen, S.-H.*, <strong>Chie, B.-T.</strong>, Fan, H.-F., &amp; Yu, T.
+            Income Distribution and Lottery Expenditures in Taiwan: An Analysis Based on Agent-Based Simulation.
+            In <span class="pub-venue">Computational Intelligence in Finance</span>.
+          </li>
+        </ol>
+      </div>
+
+      <!-- 5.3 研討會論文 -->
+      <div class="pub-category" id="cat-conf">
+        <h3>Conference Papers（研討會論文）</h3>
+        <ol class="pub-list">
+          <li data-year="2025">
+            <span class="pub-year">(2025)</span>
+            <strong>Chie, B.-T.</strong>
+            The Impact of Monetary Policy on Trust-Based Economic Network.
+            <span class="pub-venue">6th World Conference on Management and Economics</span>, Finland, July 10–12, 2025.
+          </li>
+          <li data-year="2010">
+            <span class="pub-year">(2010)</span>
+            <strong>Chie, B.-T.</strong>, &amp; Chen, S.-H.
+            Social Interactions and Innovation: Simulation Based on an Agent-Based Modular Economy.
+            <span class="pub-venue">International Academic Conference</span> (Sept. 2010).
+          </li>
+          <li data-year="2007">
+            <span class="pub-year">(2007)</span>
+            Chen, S.-H.*, &amp; <strong>Chie, B.-T.</strong>
+            Modularity, Product Innovation, and Consumer Satisfaction: An Agent-Based Approach.
+            <span class="pub-venue">International Academic Conference</span> (Dec. 2007).
+          </li>
+        </ol>
+      </div>
     </section>
 
     <!-- 6. 國科會／科技部專題研究計畫 -->
@@ -447,24 +836,297 @@
       </ul>
     </section>
 
-    <!-- 7. 教學與學術服務 -->
-    <section id="teaching-service">
-      <h2>Teaching Experience</h2>
-      <ul class="item-list">
-        <li>
-          <strong>Doctoral Level（博士班）：</strong>
-          個體經濟理論（一）、個體經濟理論（二）
+    <!-- 7. 曾任課程（依課程與開課單位彙整，顯示授課年份期間） -->
+    <section id="courses-taught">
+      <h2>
+        <span id="course-section-title">Courses Taught (Last 5 Years: 110–115學年)</span>
+        <span id="course-count-badge" class="section-badge"></span>
+      </h2>
+      <ul class="course-summary-list" id="course-summary-list">
+        <!-- 近五年仍或曾開設之課程（依授課年份期間呈現） -->
+        <li data-start-year="115" data-end-year="115">
+          <div class="course-name-group">
+            <span class="course-title">個體經濟理論</span>
+            <span class="course-dept">（經濟學系碩士班）</span>
+          </div>
+          <span class="course-period">115 學年</span>
         </li>
-        <li>
-          <strong>Master’s Level（碩士班）：</strong>
-          個體經濟理論、智慧經濟與商業創新、價格理論與實務
+        <li data-start-year="115" data-end-year="115">
+          <div class="course-name-group">
+            <span class="course-title">個體經濟理論（一）</span>
+            <span class="course-dept">（經濟學系博士班）</span>
+          </div>
+          <span class="course-period">115 學年</span>
         </li>
-        <li>
-          <strong>Undergraduate Level（大學部）：</strong>
-          財務經濟學、管理經濟學、管制經濟學、個體經濟專題（一）、ＡＩ與經濟研究報告、產業分析實作、企業實習、產業實務實習（一）
+        <li data-start-year="115" data-end-year="115">
+          <div class="course-name-group">
+            <span class="course-title">ＡＩ與經濟研究報告</span>
+            <span class="course-dept">（經濟學系）</span>
+          </div>
+          <span class="course-period">115 學年</span>
+        </li>
+        <li data-start-year="113" data-end-year="115">
+          <div class="course-name-group">
+            <span class="course-title">財務經濟學</span>
+            <span class="course-dept">（經濟學系）</span>
+          </div>
+          <span class="course-period">113 – 115 學年</span>
+        </li>
+        <li data-start-year="114" data-end-year="114">
+          <div class="course-name-group">
+            <span class="course-title">智慧經濟與商業創新</span>
+            <span class="course-dept">（經濟學系碩士班）</span>
+          </div>
+          <span class="course-period">114 學年</span>
+        </li>
+        <li data-start-year="114" data-end-year="114">
+          <div class="course-name-group">
+            <span class="course-title">個體經濟理論（二）</span>
+            <span class="course-dept">（經濟學系博士班）</span>
+          </div>
+          <span class="course-period">114 學年</span>
+        </li>
+        <li data-start-year="114" data-end-year="114">
+          <div class="course-name-group">
+            <span class="course-title">企業實習</span>
+            <span class="course-dept">（經濟學系）</span>
+          </div>
+          <span class="course-period">114 學年</span>
+        </li>
+        <li data-start-year="110" data-end-year="115">
+          <div class="course-name-group">
+            <span class="course-title">產業分析實作</span>
+            <span class="course-dept">（經濟學系／原產業經濟學系）</span>
+          </div>
+          <span class="course-period">110 – 115 學年</span>
+        </li>
+        <li data-start-year="110" data-end-year="114">
+          <div class="course-name-group">
+            <span class="course-title">管理經濟學</span>
+            <span class="course-dept">（經濟學系／原產業經濟學系）</span>
+          </div>
+          <span class="course-period">110 – 114 學年</span>
+        </li>
+        <li data-start-year="110" data-end-year="114">
+          <div class="course-name-group">
+            <span class="course-title">管制經濟學</span>
+            <span class="course-dept">（經濟學系／原產業經濟學系）</span>
+          </div>
+          <span class="course-period">110 – 114 學年</span>
+        </li>
+        <li data-start-year="110" data-end-year="113">
+          <div class="course-name-group">
+            <span class="course-title">價格理論與實務</span>
+            <span class="course-dept">（產業經濟學系碩士班）</span>
+          </div>
+          <span class="course-period">110 – 113 學年</span>
+        </li>
+        <li data-start-year="110" data-end-year="113">
+          <div class="course-name-group">
+            <span class="course-title">高等個體經濟學（一）</span>
+            <span class="course-dept">（產業經濟學系博士班）</span>
+          </div>
+          <span class="course-period">110 – 113 學年</span>
+        </li>
+        <li data-start-year="110" data-end-year="113">
+          <div class="course-name-group">
+            <span class="course-title">個體經濟專題（一）</span>
+            <span class="course-dept">（產業經濟學系）</span>
+          </div>
+          <span class="course-period">110 – 113 學年</span>
+        </li>
+        <li data-start-year="111" data-end-year="113">
+          <div class="course-name-group">
+            <span class="course-title">產業實務實習（一）</span>
+            <span class="course-dept">（產業經濟學系）</span>
+          </div>
+          <span class="course-period">111 – 113 學年</span>
+        </li>
+        <li data-start-year="111" data-end-year="111">
+          <div class="course-name-group">
+            <span class="course-title">個體經濟專題（二）</span>
+            <span class="course-dept">（產業經濟學系）</span>
+          </div>
+          <span class="course-period">111 學年</span>
+        </li>
+        <li data-start-year="110" data-end-year="110">
+          <div class="course-name-group">
+            <span class="course-title">代理人基計算經濟學</span>
+            <span class="course-dept">（產業經濟學系博士班）</span>
+          </div>
+          <span class="course-period">110 學年</span>
+        </li>
+        <li data-start-year="110" data-end-year="110">
+          <div class="course-name-group">
+            <span class="course-title">行為經濟學</span>
+            <span class="course-dept">（產業經濟學系）</span>
+          </div>
+          <span class="course-period">110 學年</span>
+        </li>
+
+        <!-- 僅在 109 學年及以前開設之課程 -->
+        <li data-start-year="97" data-end-year="109">
+          <div class="course-name-group">
+            <span class="course-title">管理經濟學</span>
+            <span class="course-dept">（保險學系）</span>
+          </div>
+          <span class="course-period">97 – 106 學年</span>
+        </li>
+        <li data-start-year="97" data-end-year="109">
+          <div class="course-name-group">
+            <span class="course-title">管制經濟學</span>
+            <span class="course-dept">（產業經濟學系）</span>
+          </div>
+          <span class="course-period">97 – 109 學年</span>
+        </li>
+        <li data-start-year="97" data-end-year="109">
+          <div class="course-name-group">
+            <span class="course-title">管理經濟學</span>
+            <span class="course-dept">（產業經濟學系）</span>
+          </div>
+          <span class="course-period">97 – 109 學年</span>
+        </li>
+        <li data-start-year="102" data-end-year="109">
+          <div class="course-name-group">
+            <span class="course-title">行為經濟學</span>
+            <span class="course-dept">（產業經濟學系，含系專業客製化課程）</span>
+          </div>
+          <span class="course-period">102 – 109 學年</span>
+        </li>
+        <li data-start-year="106" data-end-year="109">
+          <div class="course-name-group">
+            <span class="course-title">個體經濟專題（一）</span>
+            <span class="course-dept">（產業經濟學系）</span>
+          </div>
+          <span class="course-period">106 – 109 學年</span>
+        </li>
+        <li data-start-year="106" data-end-year="109">
+          <div class="course-name-group">
+            <span class="course-title">個體經濟專題（二）</span>
+            <span class="course-dept">（產業經濟學系）</span>
+          </div>
+          <span class="course-period">106 – 109 學年</span>
+        </li>
+        <li data-start-year="97" data-end-year="109">
+          <div class="course-name-group">
+            <span class="course-title">高等個體經濟學（一）</span>
+            <span class="course-dept">（產業經濟學系博士班）</span>
+          </div>
+          <span class="course-period">97 – 109 學年</span>
+        </li>
+        <li data-start-year="101" data-end-year="109">
+          <div class="course-name-group">
+            <span class="course-title">代理人基計算經濟學</span>
+            <span class="course-dept">（產業經濟學系博士班）</span>
+          </div>
+          <span class="course-period">101 – 109 學年</span>
+        </li>
+        <li data-start-year="97" data-end-year="108">
+          <div class="course-name-group">
+            <span class="course-title">人工智慧經濟學</span>
+            <span class="course-dept">（產業經濟學系碩士班／博士班）</span>
+          </div>
+          <span class="course-period">97 – 108 學年</span>
+        </li>
+        <li data-start-year="97" data-end-year="109">
+          <div class="course-name-group">
+            <span class="course-title">價格理論（二）／價格理論與實務</span>
+            <span class="course-dept">（產業經濟學系碩士班）</span>
+          </div>
+          <span class="course-period">97 – 109 學年</span>
+        </li>
+        <li data-start-year="105" data-end-year="106">
+          <div class="course-name-group">
+            <span class="course-title">個體經濟學理論與實務</span>
+            <span class="course-dept">（產業經濟學系碩士班）</span>
+          </div>
+          <span class="course-period">105 – 106 學年</span>
+        </li>
+        <li data-start-year="102" data-end-year="104">
+          <div class="course-name-group">
+            <span class="course-title">個體經濟學（二）</span>
+            <span class="course-dept">（產業經濟學系碩士班）</span>
+          </div>
+          <span class="course-period">102 – 104 學年</span>
+        </li>
+        <li data-start-year="102" data-end-year="102">
+          <div class="course-name-group">
+            <span class="course-title">實驗經濟學</span>
+            <span class="course-dept">（產業經濟學系博士班）</span>
+          </div>
+          <span class="course-period">102 學年</span>
+        </li>
+        <li data-start-year="98" data-end-year="108">
+          <div class="course-name-group">
+            <span class="course-title">專題討論／專題討論（二）／產業專題</span>
+            <span class="course-dept">（產業經濟學系碩士班）</span>
+          </div>
+          <span class="course-period">98 – 108 學年</span>
         </li>
       </ul>
     </section>
   </main>
+
+  <script>
+    function setRange(mode) {
+      const btn5 = document.getElementById('btn-5yr');
+      const btnAll = document.getElementById('btn-all');
+
+      // 1. 著作元素
+      const pubTitleEl = document.getElementById('pub-section-title');
+      const pubBadgeEl = document.getElementById('pub-count-badge');
+      const pubItems = document.querySelectorAll('#publications li[data-year]');
+      const pubCategories = document.querySelectorAll('.pub-category');
+
+      // 2. 曾任課程與兼課助教元素
+      const courseTitleEl = document.getElementById('course-section-title');
+      const courseBadgeEl = document.getElementById('course-count-badge');
+      const courseItems = document.querySelectorAll('#courses-taught li[data-start-year]');
+      const allOnlyBlocks = document.querySelectorAll('.range-item[data-range="all"]');
+
+      btn5.classList.toggle('active', mode === '5yr');
+      btnAll.classList.toggle('active', mode === 'all');
+
+      allOnlyBlocks.forEach(el => {
+        el.classList.toggle('hidden-item', mode !== 'all');
+      });
+
+      // 切換著作（近五年：2021–2026；全部：2004–2026）
+      let visiblePubCount = 0;
+      pubItems.forEach(item => {
+        const year = parseInt(item.getAttribute('data-year'), 10);
+        const show = (mode === 'all') || (year >= 2021);
+        item.classList.toggle('hidden-item', !show);
+        if (show) visiblePubCount++;
+      });
+
+      pubCategories.forEach(cat => {
+        const visibleInCat = cat.querySelectorAll('li[data-year]:not(.hidden-item)').length;
+        cat.classList.toggle('hidden-item', visibleInCat === 0);
+      });
+
+      pubTitleEl.textContent = (mode === '5yr')
+        ? 'Publications (Last 5 Years: 2021–2026)'
+        : 'Publications (Complete List: 2004–2026)';
+      pubBadgeEl.textContent = `共 ${visiblePubCount} 篇`;
+
+      // 切換曾任課程彙整（近五年學年：結束學年 >= 110；全部：97–115學年）
+      let visibleCourseCount = 0;
+      courseItems.forEach(item => {
+        const endYear = parseInt(item.getAttribute('data-end-year'), 10);
+        const show = (mode === 'all') || (endYear >= 110);
+        item.classList.toggle('hidden-item', !show);
+        item.classList.toggle('visible-course-row', show);
+        if (show) visibleCourseCount++;
+      });
+
+      courseTitleEl.textContent = (mode === '5yr')
+        ? 'Courses Taught (Last 5 Years: 110–115學年)'
+        : 'Courses Taught (Complete Record: 97–115學年)';
+      courseBadgeEl.textContent = `共 ${visibleCourseCount} 科次`;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => setRange('5yr'));
+  </script>
 </body>
 </html>
